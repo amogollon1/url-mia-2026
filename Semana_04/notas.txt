@@ -1,0 +1,6 @@
+Comandos de Git:
+    1. git branch
+    2. git status
+    3. git add ..
+    4. git pull
+    5. git push

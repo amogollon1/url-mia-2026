@@ -1,0 +1,6 @@
+• ¿Qué es Git?
+    Es una sistema que sirve para tener un control de versiones, permite que varias personas trabajen en un mismo proyecto a la vez.
+• ¿Qué es GitLab?
+    Es una plataforma que permite controlar versiones y almacenar código, es un Git con más funcionalidades, como poder crear proyectos en conjunto y delegar un encargado de revisar las versiones antes de implementarlas.
+• ¿Cuál es la diferencia entre Git y GitLab?
+    Git es el motor que guarda las versiones y GitLab es la plataforma donde se puede acceder y compartir las versiones.
