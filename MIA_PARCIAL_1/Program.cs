@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 
@@ -8,6 +8,7 @@ namespace Parcial_I_Alejandro_Mogollon
     {
         static void Main(string[] args)
         {
+            // Entradas
             Console.Write("Ingrese su nombre completo: ");
             string nombreCompleto = Console.ReadLine()?.Trim() ?? string.Empty;
 
@@ -25,7 +26,7 @@ namespace Parcial_I_Alejandro_Mogollon
                 Console.ReadKey();
                 return;
             }
-
+            //Proceso
             try
             {
                 string[] lineas = File.ReadAllLines(rutaArchivoTexto);
@@ -36,7 +37,7 @@ namespace Parcial_I_Alejandro_Mogollon
 
                 char[] separadores = new char[] { ' ', '\r', '\n', '\t' };
                 int numeroPalabras = textoCompleto.Split(separadores, StringSplitOptions.RemoveEmptyEntries).Length;
-
+            //Salida
                 Console.WriteLine();
                 Console.WriteLine($"Número de Líneas:     {numeroLineas}");
                 Console.WriteLine($"Número de Palabras:   {numeroPalabras}");
