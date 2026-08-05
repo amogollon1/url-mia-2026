@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Linq;
 
 namespace Parcial_I_Alejandro_Mogollon
 {
@@ -8,11 +7,10 @@ namespace Parcial_I_Alejandro_Mogollon
     {
         static void Main(string[] args)
         {
-            // Entradas
             Console.Write("Ingrese su nombre completo: ");
             string nombreCompleto = Console.ReadLine()?.Trim() ?? string.Empty;
 
-            string nombreFormateado = string.Join("_", nombreCompleto.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
+            string nombreFormateado = nombreCompleto.Replace(' ', '_');
 
             string rutaCarpeta = @"C:\MIA_Parcial1";
             string rutaArchivoTexto = Path.Combine(rutaCarpeta, $"{nombreFormateado}.txt");
@@ -20,24 +18,49 @@ namespace Parcial_I_Alejandro_Mogollon
             if (!File.Exists(rutaArchivoTexto))
             {
                 Console.WriteLine();
-                Console.WriteLine($"[ERROR] No se encontró el archivo en la ruta: {rutaArchivoTexto}");
+                Console.WriteLine($"No se encontró el archivo en la ruta: {rutaArchivoTexto}");
                 Console.WriteLine($"Asegúrese de crear primero la carpeta {rutaCarpeta} y el archivo correspondientes.");
                 Console.WriteLine("Presione cualquier tecla para salir.");
                 Console.ReadKey();
                 return;
             }
-            //Proceso
+
             try
             {
-                string[] lineas = File.ReadAllLines(rutaArchivoTexto);
                 string textoCompleto = File.ReadAllText(rutaArchivoTexto);
 
-                int numeroLineas = lineas.Length;
-                int numeroCaracteres = textoCompleto.Length;
+                int numeroLineas = 0;
+                int numeroPalabras = 0;
+                int numeroCaracteres = 0;
+                bool enPalabra = false;
 
-                char[] separadores = new char[] { ' ', '\r', '\n', '\t' };
-                int numeroPalabras = textoCompleto.Split(separadores, StringSplitOptions.RemoveEmptyEntries).Length;
-            //Salida
+                if (textoCompleto.Length > 0)
+                {
+                    numeroLineas = 1;
+                }
+
+                for (int i = 0; i < textoCompleto.Length; i++)
+                {
+                    char c = textoCompleto[i];
+
+                    numeroCaracteres++;
+
+                    if (c == '\n')
+                    {
+                        numeroLineas++;
+                    }
+
+                    if (char.IsWhiteSpace(c))
+                    {
+                        enPalabra = false;
+                    }
+                    else if (!enPalabra)
+                    {
+                        enPalabra = true;
+                        numeroPalabras++;
+                    }
+                }
+
                 Console.WriteLine();
                 Console.WriteLine($"Número de Líneas:     {numeroLineas}");
                 Console.WriteLine($"Número de Palabras:   {numeroPalabras}");
@@ -57,7 +80,7 @@ namespace Parcial_I_Alejandro_Mogollon
             catch (Exception ex)
             {
                 Console.WriteLine();
-                Console.WriteLine($"[ERROR] Ocurrió un problema al procesar el archivo: {ex.Message}");
+                Console.WriteLine($"Ocurrió un problema al procesar el archivo: {ex.Message}");
             }
         }
     }
