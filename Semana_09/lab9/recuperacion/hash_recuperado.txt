@@ -1,0 +1,3 @@
+SHA256 hash de recuperacion\datos_recuperados.txt:
+2587f22a211d546d86791ee8c8836d2bdf61befc48081daf62c6715e52ab2807
+CertUtil: -hashfile comando completado correctamente.
