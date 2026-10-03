@@ -1,0 +1,7 @@
+*.env
+.env
+.env.*
+
+# Carpetas de compilación de .NET/C#
+bin/
+obj/
